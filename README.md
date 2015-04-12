@@ -23,10 +23,10 @@
 
 7. Match the following project settings:
   > Project build settings
-    - Architectures -> 32 bit intel (64-bit and Universal not currently supported.)
-    - Wrapper extension -> bundle
-    - Mach-o type -> Bundle
-    - Warnings, deprecated functions -> No (There are lots of them!)
+  - Architectures -> 32 bit intel (64-bit and Universal not currently supported.)
+  - Wrapper extension -> bundle
+  - Mach-o type -> Bundle
+  - Warnings, deprecated functions -> No (There are lots of them!)
 
 [![Build Settings](http://s22.postimg.org/wm4f4vbd9/Screen_Shot_2015_04_11_at_6_39_54_PM.jpg)](http://s22.postimg.org/motebt3rl/Screen_Shot_2015_04_11_at_6_39_54_PM.png)
   > Project Build Phases, Run Script
@@ -38,8 +38,8 @@
 
 8. You should not have to touch the default settings, but confirm the following:
   > OpenFrameworks build settings:
-    - Architectures -> 32 bit intel
-    - Warnings, deprecated functions -> No (There are lots of them!)
+  - Architectures -> 32 bit intel
+  - Warnings, deprecated functions -> No (There are lots of them!)
 
 9. Select the openFrameworksLib project in the openframeworks folder of the Project navigator. Ensure OpenFrameworks is the active scheme next to the Build (play) button in Xcode. Build OpenFrameworks, it should compile fine with no issues.
 10. Select YourProject in the Project navigator and ensure YourProject Debug or Release is set as the active scheme next to the Build (play) button in Xcode.
