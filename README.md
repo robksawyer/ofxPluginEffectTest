@@ -28,7 +28,7 @@ For FFGL development, it's important to have some understanding of GLSL shader l
 - [FFGL SDK](http://freeframe.sourceforge.net/) - The SDK includes 4 demo plugins, but don't expect to be able to compile them. I didn't have any luck.
 - The [Resolume forum](http://resolume.com/forum/) has a pretty good list of 3rd-party FFGL plugins and some links to GLSL shaders.
 - [Matias Wilkman](http://matiaswilkman.blogspot.co.at/search/label/ffgl) has some nice examples at [assembla.com](https://www.assembla.com/code/ffgl/subversion/nodes/14/trunk/Source/FFGLPlugins).
-
+- [Mastering openFrameworks: Creative Coding Demystified](http://www.amazon.com/Mastering-openFrameworks-Creative-Coding-Demystified/dp/1849518041)
 
 ##My System
 
