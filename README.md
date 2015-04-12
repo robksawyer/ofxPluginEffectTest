@@ -3,7 +3,7 @@
 
 ##Dependencies
 
-- [Open Frameworks (~v0.8.4)](https://github.com/openframeworks/openFrameworks) - I've only test this with the stable build of v0.8.4.
+- [Open Frameworks (~v0.8.4)](http://openframeworks.cc/download/) - I've only test this with the stable build of v0.8.4.
 - [ofxFFGLplugin](https://code.google.com/p/ofxffglplugin/) - There are some issues with the latest version that need to be patched. I'd advise using the updated version at [robksawyer/ofFFGLPlugin](https://github.com/robksawyer/ofFFGLPlugin).
 
 
@@ -21,3 +21,16 @@ For FFGL development, it's important to have some understanding of GLSL shader l
 - The [Resolume forum](http://resolume.com/forum/) has a pretty good list of 3rd-party FFGL plugins and some links to GLSL shaders.
 - [Matias Wilkman](http://matiaswilkman.blogspot.co.at/search/label/ffgl) has some nice examples at [assembla.com](https://www.assembla.com/code/ffgl/subversion/nodes/14/trunk/Source/FFGLPlugins).
 
+
+##My System
+
+All of the testing that I've completed is done on a 2014 Macbook Pro Retina running the latest version of Mavericks. I'm also using Xcode 6.3. As a host I'm testing the plugins with [Resolume Arena 4.2.0](http://resolume.com/blog/11850/resolume-4-2-released-smoother-and-faster).
+
+
+## Revisions
+
+### Version 1.0.1
+- Decided that adding `FFGL` folder to `/Applications/Resolume X.X.X/plugins/vfx/` was not very good for deployment, so I added a new Copy Phase under Build Phases in Xcode and had it copy the data folder into the bundle's Resources folder. I then had to modify the path in `testApp.cpp` so it would link to the new data.
+
+### Version 1.0
+- This is the base version that was pulled from the work of davidemania over at the OpenFrameworks forum <http://forum.openframeworks.cc/t/ofxffgl-with-xcode5-and-of080/14031>. 
