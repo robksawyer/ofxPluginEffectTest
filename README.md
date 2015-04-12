@@ -13,6 +13,7 @@
 
 ## Getting started with Open Frameworks Project Generator
 
+### Part 1
 1. Download the dependencies listed below. Also verify that you are running a similar setup to the one listed in My System below.
 2. Move the latest version of [robksawyer/ofFFGLPlugin/addons/ofxFFGLPlugin](https://github.com/robksawyer/ofFFGLPlugin) to `openframeworks_v0.X.X/addons/`
 3. Open `Project Generator` and name your sketch. The project will be created in your openframeworks folder under `apps/myApps`.
@@ -28,24 +29,26 @@
   - Mach-o type -> Bundle
   - Warnings, deprecated functions -> No (There are lots of them!)
 
-[![Build Settings](http://s22.postimg.org/wm4f4vbd9/Screen_Shot_2015_04_11_at_6_39_54_PM.jpg)](http://s22.postimg.org/motebt3rl/Screen_Shot_2015_04_11_at_6_39_54_PM.png)
+  [![Build Settings](http://s22.postimg.org/wm4f4vbd9/Screen_Shot_2015_04_11_at_6_39_54_PM.jpg)](http://s22.postimg.org/motebt3rl/Screen_Shot_2015_04_11_at_6_39_54_PM.png)
   > Project Build Phases, Run Script
   - change `@executable_path` with `@loader_path`
   - change “.app” extensions to “.bundle” where present
   - add `cp -rf "$TARGET_BUILD_DIR/$PRODUCT_NAME.bundle" /Applications/Resolume\ Arena\ 4.X.X/plugins/vfx` (or change path according to your Host App location and name)
+  [![Run script](http://s13.postimg.org/cy04avio3/Screen_Shot_2015_04_11_at_6_22_21_PM.jpg)](http://s13.postimg.org/3q7vu6blz/Screen_Shot_2015_04_11_at_6_22_21_PM.png)
 
-[![Run script](http://s13.postimg.org/cy04avio3/Screen_Shot_2015_04_11_at_6_22_21_PM.jpg)](http://s13.postimg.org/3q7vu6blz/Screen_Shot_2015_04_11_at_6_22_21_PM.png)
-
-8. You should not have to touch the default settings, but confirm the following:
+8. You should NOT have to touch the default settings, but confirm the following:
   > OpenFrameworks build settings:
   - Architectures -> 32 bit intel
   - Warnings, deprecated functions -> No (There are lots of them!)
 
 9. Select the openFrameworksLib project in the openframeworks folder of the Project navigator. Ensure OpenFrameworks is the active scheme next to the Build (play) button in Xcode. Build OpenFrameworks, it should compile fine with no issues.
-10. Select YourProject in the Project navigator and ensure YourProject Debug or Release is set as the active scheme next to the Build (play) button in Xcode.
-11. Confirm `ofTex->texData.glType = GL_RGBA;` in `addons/ofxFFGLPlugin/src/ofxFFGLPlugin.cpp` is commented out.
-12. Confirm `default: ;` is in the `addons/ofxFFGLPlugin/src/ofxFFGLPlugin.cpp` switch/case. This suppresses two warnings.
-13. Confirm that the following is at the beginning of `addons/ofxFFGLPlugin/libs/FFGL/FFGL.h`:
+
+### Part 2
+
+1. Select YourProject in the Project navigator and ensure YourProject Debug or Release is set as the active scheme next to the Build (play) button in Xcode.
+2. Confirm `ofTex->texData.glType = GL_RGBA;` in `addons/ofxFFGLPlugin/src/ofxFFGLPlugin.cpp` is commented out.
+3. Confirm `default: ;` is in the `addons/ofxFFGLPlugin/src/ofxFFGLPlugin.cpp` switch/case. This suppresses two warnings.
+4. Confirm that the following is at the beginning of `addons/ofxFFGLPlugin/libs/FFGL/FFGL.h`:
 ``` 
 #ifdef __APPLE__
 #include <TargetConditionals.h>
@@ -78,7 +81,7 @@ inf FFGLShader.h change as follows
 #endif
 ```
 
-14. Confirm the following is between `ofSetupOpenGL` and `ofRunApp` in `addons/ofxFFGLPlugin/src/ofxFFGLWindow.cpp`.
+5. Confirm the following is between `ofSetupOpenGL` and `ofRunApp` in `addons/ofxFFGLPlugin/src/ofxFFGLWindow.cpp`.
 
 ```
   glewExperimental = GL_TRUE;
@@ -92,7 +95,7 @@ inf FFGLShader.h change as follows
   glDisable( GL_DEPTH_TEST );
 ```
 
-15. Confirm that the following methods are in `addons/ofxFFGLPlugin/src/ofxFFGLWindow.cpp`.
+6. Confirm that the following methods are in `addons/ofxFFGLPlugin/src/ofxFFGLWindow.cpp`.
 
 ```
 int ofFFGLWindow::getHeight()
@@ -106,15 +109,14 @@ int ofFFGLWindow::getWidth()
 }
 ```
 
-16. Ensure that the following declarations are in the header of `addons/ofxFFGLPlugin/src/ofxFFGLWindow.h`.
+7. Ensure that the following declarations are in the header of `addons/ofxFFGLPlugin/src/ofxFFGLWindow.h`.
+
 ```
 int     getHeight();
 int     getWidth();
 ```
 
-
-17. The project should now build with no issues.
-
+8. The project should now build with no issues!
 
 > After you build, the YourProject.bundle should be copied to Arena vfx plugins dir. You can now launch Arena. The plugin should be visible in the list (Name corresponds to the name listed in `src/main.cpp`. Select it and check that sample parameters are present and info is correct. Try to apply it to the webcam, it should work (try changing the repetitions parameter). If the plugin does not show up, copy it from bin directory of your project and check that you added the copy command (`cp -rf "$TARGET_BUILD_DIR/$PRODUCT_NAME.bundle" /Applications/Resolume\ Arena\ 4.2.0/plugins/vfx`) in the Run Script area of Build Phases.  
 
