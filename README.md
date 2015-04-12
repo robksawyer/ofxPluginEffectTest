@@ -135,11 +135,13 @@ For FFGL development, it's important to have some understanding of GLSL shader l
 ##Resources
 
 - Open Frameworks Documentation <http://openframeworks.cc/documentation/>
+- Some awesome Open Frameworks Tutorials by Lewis Lepton <https://www.youtube.com/playlist?list=PL4neAtv21WOmrV8z9rSzL20QpdLU1zJLr>
 - Forum post [ofxFFGL with Xcode5 and OF080](http://forum.openframeworks.cc/t/ofxffgl-with-xcode5-and-of080/14031/28) on <forum.openframeworks.cc>. - This is basically where most of the project came from. Thanks should go to davidemania.
 - [FFGL SDK](http://freeframe.sourceforge.net/) - The SDK includes 4 demo plugins, but don't expect to be able to compile them. I didn't have any luck.
 - The [Resolume forum](http://resolume.com/forum/) has a pretty good list of 3rd-party FFGL plugins and some links to GLSL shaders.
 - [Matias Wilkman](http://matiaswilkman.blogspot.co.at/search/label/ffgl) has some nice examples at [assembla.com](https://www.assembla.com/code/ffgl/subversion/nodes/14/trunk/Source/FFGLPlugins).
 - [Mastering openFrameworks: Creative Coding Demystified](http://www.amazon.com/Mastering-openFrameworks-Creative-Coding-Demystified/dp/1849518041)
+- [vvffgl](https://code.google.com/p/vvffgl/) - Framework for working with FreeFrame and FreeFrame 1.5 (FFGL) plugins on OS X.
 
 ##My System
 
