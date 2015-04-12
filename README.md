@@ -30,7 +30,7 @@
   - Warnings, deprecated functions -> No (There are lots of them!)
 
   [![Build Settings](http://s22.postimg.org/wm4f4vbd9/Screen_Shot_2015_04_11_at_6_39_54_PM.jpg)](http://s22.postimg.org/motebt3rl/Screen_Shot_2015_04_11_at_6_39_54_PM.png)
-  
+
   > Project Build Phases, Run Script
   - change `@executable_path` with `@loader_path`
   - change “.app” extensions to “.bundle” where present
@@ -51,72 +51,69 @@
 2. Confirm `ofTex->texData.glType = GL_RGBA;` in `addons/ofxFFGLPlugin/src/ofxFFGLPlugin.cpp` is commented out.
 3. Confirm `default: ;` is in the `addons/ofxFFGLPlugin/src/ofxFFGLPlugin.cpp` switch/case. This suppresses two warnings.
 4. Confirm that the following is at the beginning of `addons/ofxFFGLPlugin/libs/FFGL/FFGL.h`:
-``` 
-#ifdef __APPLE__
-#include <TargetConditionals.h>
-#endif
-at the beginning of FFGL.h
+  ``` 
+  #ifdef __APPLE__
+  #include <TargetConditionals.h>
+  #endif
+  at the beginning of FFGL.h
 
-inf FFGLExtensions.h comment out
-typedef unsigned int GLhandleARB;
-and replace with
-#if defined(__APPLE__)
-typedef void *GLhandleARB;
-#else
-typedef unsigned int GLhandleARB;
-#endif
-then change the definition of GETProcAddress to
-void *FFGLExtensions::GetProcAddress(char const *name)
-(also in header file of course)
+  inf FFGLExtensions.h comment out
+  typedef unsigned int GLhandleARB;
+  and replace with
+  #if defined(__APPLE__)
+  typedef void *GLhandleARB;
+  #else
+  typedef unsigned int GLhandleARB;
+  #endif
+  then change the definition of GETProcAddress to
+  void *FFGLExtensions::GetProcAddress(char const *name)
+  (also in header file of course)
 
-inf FFGLShader.h change as follows
-#ifdef __APPLE__
-    void * m_glProgram;
-    void * m_glVertexShader;
-    void * m_glFragmentShader;
-    GLuint m_linkStatus;
-#else
-    GLenum m_glProgram;
-    GLenum m_glVertexShader;
-    GLenum m_glFragmentShader;
-    GLuint m_linkStatus;
-#endif
-```
+  inf FFGLShader.h change as follows
+  #ifdef __APPLE__
+      void * m_glProgram;
+      void * m_glVertexShader;
+      void * m_glFragmentShader;
+      GLuint m_linkStatus;
+  #else
+      GLenum m_glProgram;
+      GLenum m_glVertexShader;
+      GLenum m_glFragmentShader;
+      GLuint m_linkStatus;
+  #endif
+  ```
 
 5. Confirm the following is between `ofSetupOpenGL` and `ofRunApp` in `addons/ofxFFGLPlugin/src/ofxFFGLWindow.cpp`.
+  ```
+    glewExperimental = GL_TRUE;
+    GLenum err = glewInit();
+    if (GLEW_OK != err)
+    {
+      /* Problem: glewInit failed, something is seriously wrong. */
+      ofLogError("ofAppRunner") << "couldn't init GLEW: " << glewGetErrorString(err);
+    }
 
-```
-  glewExperimental = GL_TRUE;
-  GLenum err = glewInit();
-  if (GLEW_OK != err)
-  {
-    /* Problem: glewInit failed, something is seriously wrong. */
-    ofLogError("ofAppRunner") << "couldn't init GLEW: " << glewGetErrorString(err);
-  }
-
-  glDisable( GL_DEPTH_TEST );
-```
+    glDisable( GL_DEPTH_TEST );
+  ```
 
 6. Confirm that the following methods are in `addons/ofxFFGLPlugin/src/ofxFFGLWindow.cpp`.
+  ```
+  int ofFFGLWindow::getHeight()
+  {
+      return (int)windowSize.y;
+  }
 
-```
-int ofFFGLWindow::getHeight()
-{
-    return (int)windowSize.y;
-}
-
-int ofFFGLWindow::getWidth()
-{
-    return (int)windowSize.x;
-}
+  int ofFFGLWindow::getWidth()
+  {
+      return (int)windowSize.x;
+  }
 ```
 
 7. Ensure that the following declarations are in the header of `addons/ofxFFGLPlugin/src/ofxFFGLWindow.h`.
-
-```
-int     getHeight();
-int     getWidth();
-```
+  ```
+  int     getHeight();
+  int     getWidth();
+  ```
 
 8. The project should now build with no issues!
 
