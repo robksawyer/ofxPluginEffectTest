@@ -30,10 +30,12 @@
   - Warnings, deprecated functions -> No (There are lots of them!)
 
   [![Build Settings](http://s22.postimg.org/wm4f4vbd9/Screen_Shot_2015_04_11_at_6_39_54_PM.jpg)](http://s22.postimg.org/motebt3rl/Screen_Shot_2015_04_11_at_6_39_54_PM.png)
+  
   > Project Build Phases, Run Script
   - change `@executable_path` with `@loader_path`
   - change “.app” extensions to “.bundle” where present
   - add `cp -rf "$TARGET_BUILD_DIR/$PRODUCT_NAME.bundle" /Applications/Resolume\ Arena\ 4.X.X/plugins/vfx` (or change path according to your Host App location and name)
+
   [![Run script](http://s13.postimg.org/cy04avio3/Screen_Shot_2015_04_11_at_6_22_21_PM.jpg)](http://s13.postimg.org/3q7vu6blz/Screen_Shot_2015_04_11_at_6_22_21_PM.png)
 
 8. You should NOT have to touch the default settings, but confirm the following:
