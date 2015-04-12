@@ -1,5 +1,13 @@
 # Open Frameworks Plugin FFGL Effect Test for OSX and Xcode
 
+## Getting started
+
+1. Download the dependencies listed below.
+2. Clone this repo using `git clone`.
+3. Move the latest version of [robksawyer/ofFFGLPlugin/addons/ofxFFGLPlugin](https://github.com/robksawyer/ofFFGLPlugin) to `openframeworks_v0.8.4/addons/`
+4. Move `ofxPluginEffectTest080` to `openframeworks_v0.X.X/apps/myApps/`.
+5. Start hacking!
+
 
 ##Dependencies
 
